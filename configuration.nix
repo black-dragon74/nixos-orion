@@ -149,15 +149,6 @@
     };
   };
 
-  # Cronjobs to backup to s3
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "00 5,17 * * *	root	. /etc/profile; /home/nick/scripts/backup_to_s3.sh"
-      "10 5,17 * * *	root	. /etc/profile; /home/nick/scripts/backup_to_sids_s3.sh"
-    ];
-  };
-
   virtualisation.docker = {
     enable = true;
     daemon = {
