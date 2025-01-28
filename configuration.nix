@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./firewall.nix
       ./systemd.nix
     ];
 
@@ -154,17 +155,14 @@
     daemon = {
       settings = {
         "experimental" = true;
-	"ipv6" = true;
-	"ip6tables" = true;
-	"dns" = [ "1.1.1.1" "1.0.0.1" ];
-	"fixed-cidr-v6" = "2974:abc:1::/64";
+        "ipv6" = true;
+        "ip6tables" = false;
+        "iptables" = false;
+        "dns" = [ "1.1.1.1" "1.0.0.1" ];
+        "fixed-cidr-v6" = "2974:abc:1::/64";
       };
     };
   };
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 465 10443 ];
-  networking.firewall.allowedUDPPorts = [ 443 ];
 
   # NixOS GC config
   nix.optimise.automatic = true;
