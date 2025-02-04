@@ -104,6 +104,7 @@
     bat
     btop
     intel-gpu-tools
+    smartmontools
     pciutils
     git
     gcc
