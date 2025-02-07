@@ -27,7 +27,10 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       Unit = "backupToS3.service";
-      OnCalendar = [ "*-*-* 5:00:00" "*-*-* 17:00:00" ];
+      OnCalendar = [
+        "*-*-* 5:00:00"
+        "*-*-* 17:00:00"
+      ];
       Persistent = true;
     };
   };
@@ -36,7 +39,10 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       Unit = "backupToSidsS3.service";
-      OnCalendar = [ "*-*-* 5:10:00" "*-*-* 17:10:00" ];
+      OnCalendar = [
+        "*-*-* 5:10:00"
+        "*-*-* 17:10:00"
+      ];
       Persistent = true;
     };
   };
