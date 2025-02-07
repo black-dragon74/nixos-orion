@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./packages.nix
       ./firewall.nix
       ./systemd.nix
       ./msmtp.nix
@@ -36,34 +37,6 @@
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_IN";
-
-  # i18n.extraLocaleSettings = {
-  #   LC_ADDRESS = "en_IN";
-  #   LC_IDENTIFICATION = "en_IN";
-  #   LC_MEASUREMENT = "en_IN";
-  #   LC_MONETARY = "en_IN";
-  #   LC_NAME = "en_IN";
-  #   LC_NUMERIC = "en_IN";
-  #   LC_PAPER = "en_IN";
-  #   LC_TELEPHONE = "en_IN";
-  #   LC_TIME = "en_IN";
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "us";
-  #   variant = "";
-  # };
-
   # Set fish shell as default for all users
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
@@ -86,37 +59,6 @@
     viAlias = true;
     vimAlias = true;
   };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    restic
-    rclone
-    tmux
-    zfs
-    dig
-    wget
-    inetutils
-    tree
-    unzip
-    zoxide
-    jq
-    fzf
-    zip
-    bat
-    btop
-    intel-gpu-tools
-    smartmontools
-    pciutils
-    git
-    gcc
-    htop 
-    python3Full
-    python3Packages.pip
-    python3Packages.argcomplete
-    python3Packages.virtualenv
-    python3Packages.setuptools-rust
-  ];
 
   # List services that you want to enable:
   services.openssh = {
