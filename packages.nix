@@ -16,6 +16,7 @@
     intel-gpu-tools
     jq
     nixfmt-rfc-style
+    nodejs_22
     pciutils
     python3Full
     python3Packages.argcomplete

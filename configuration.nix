@@ -123,8 +123,8 @@
       settings = {
         "experimental" = true;
         "ipv6" = true;
-        "ip6tables" = false;
-        "iptables" = false;
+        # "ip6tables" = false;
+        # "iptables" = false;
         "dns" = [
           "1.1.1.1"
           "1.0.0.1"

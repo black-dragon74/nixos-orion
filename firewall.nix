@@ -18,13 +18,14 @@
     # We need masquerading on eth to allow docker
     # containers to talk to the internet.
     tables."docker" = {
-      enable = true;
+      enable = false;
       family = "inet";
       content = ''
         				chain postrouting {
         					type nat hook postrouting priority srcnat; policy accept;
         					
-        					oifname "enp3s0" masquerade;
+                  oifname "enp3s0" ip daddr != 172.18.0.0/16 masquerade
+                  oifname "enp3s0" ip6 daddr != fd35:4ead:dcd4::/64 masquerade
         				}
       '';
     };
