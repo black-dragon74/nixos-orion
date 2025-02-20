@@ -90,14 +90,14 @@
   services.btrfs = {
     autoScrub = {
       enable = true;
-      interval = "weekly";
+      interval = "monthly";
     };
   };
 
   services.zfs = {
     autoScrub = {
       enable = true;
-      interval = "weekly";
+      interval = "monthly";
     };
     trim = {
       enable = true;
