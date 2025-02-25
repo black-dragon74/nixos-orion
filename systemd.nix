@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   systemd.services."backupToS3" = {
@@ -19,6 +19,24 @@
       ExecStart = "/home/nick/scripts/backup_to_sids_s3.sh";
       Environment = "PATH=/run/current-system/sw/bin";
     };
+  };
+
+  systemd.services."piholeshim" = {
+    description = "Setup macvlan interface piholeshim";
+    after = [ "network.target" ];
+    wants = [ "network.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.iproute2}/bin/ip link add piholeshim link enp3s0 type macvlan mode bridge";
+      ExecStartPost = [
+        "${pkgs.iproute2}/bin/ip addr add 10.29.74.54/32 dev piholeshim"
+        "${pkgs.iproute2}/bin/ip link set piholeshim up"
+        "${pkgs.iproute2}/bin/ip route add 10.29.74.55/32 dev piholeshim"
+      ];
+      ExecStop = "${pkgs.iproute2}/bin/ip link del piholeshim";
+    };
+    wantedBy = [ "multi-user.target" ];
   };
 
   # Define timers for the above services here
