@@ -21,6 +21,19 @@
     };
   };
 
+  systemd.services."jvvnl" = {
+    description = "Monitor JVVNL grid";
+    after = [ "network.target" ];
+    serviceConfig = {
+      Type = "simple";
+      User = "root";
+      ExecStart = "/home/nick/scripts/nut.sh";
+      Environment = "PATH=/run/current-system/sw/bin";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
   systemd.services."piholeshim" = {
     description = "Setup macvlan interface piholeshim";
     after = [ "network.target" ];
