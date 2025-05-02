@@ -108,7 +108,7 @@
     enable = true;
     autodetect = true;
     defaults = {
-      autodetected = "-a -o on -s (S/../.././02|L/../../7/04)";
+      autodetected = "-a -o on -s (S/../../7/02|L/01/.././04)";
     };
     notifications = {
       # test = true;
