@@ -46,20 +46,8 @@
   ];
 
   # ZFS Zvols
-  fileSystems."/mnt/nextcloud" = {
-    device = "/dev/disk/by-uuid/43e207ef-a1c4-403c-8ddb-8489332e3b7d";
-    fsType = "xfs";
-    options = [ "nofail" ];
-  };
-
   fileSystems."/mnt/media" = {
     device = "/dev/disk/by-uuid/7b3b45d3-5339-4086-8370-3064c9f07e3f";
-    fsType = "xfs";
-    options = [ "nofail" ];
-  };
-
-  fileSystems."/mnt/immich" = {
-    device = "/dev/disk/by-uuid/01cd2b1d-9a75-4738-9634-2c389d7fe289";
     fsType = "xfs";
     options = [ "nofail" ];
   };
