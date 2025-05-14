@@ -119,6 +119,21 @@
     };
   };
 
+  services.prometheus.exporters = {
+    node = {
+      enable = true;
+    };
+    zfs = {
+      enable = true;
+    };
+  };
+
+  services.cadvisor = {
+    enable = true;
+    port = 9200;
+    listenAddress = "0.0.0.0";
+  };
+
   virtualisation.docker = {
     enable = true;
     daemon = {
