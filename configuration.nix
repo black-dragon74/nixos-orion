@@ -140,8 +140,8 @@
       settings = {
         "experimental" = true;
         "ipv6" = true;
-        # "ip6tables" = false;
-        # "iptables" = false;
+        "ip6tables" = true;
+        "iptables" = true;
         "dns" = [
           "1.1.1.1"
           "1.0.0.1"
