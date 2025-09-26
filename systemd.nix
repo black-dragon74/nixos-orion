@@ -21,6 +21,16 @@
     };
   };
 
+  systemd.services."backupImmichToSidsS3" = {
+    description = "Backup Immich to Sids S3";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      ExecStart = "/home/nick/scripts/backup_immich_to_sids.sh";
+      Environment = "PATH=/run/current-system/sw/bin";
+    };
+  };
+
   systemd.services."jvvnl" = {
     description = "Monitor JVVNL grid";
     after = [ "network.target" ];
@@ -73,6 +83,17 @@
       OnCalendar = [
         "*-*-* 5:10:00"
         "*-*-* 17:10:00"
+      ];
+      Persistent = true;
+    };
+  };
+
+  systemd.timers."schedule-sids-immich-backup" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      Unit = "backupImmichToSidsS3.service";
+      OnCalendar = [
+        "*-*-* 2:00:00"
       ];
       Persistent = true;
     };
