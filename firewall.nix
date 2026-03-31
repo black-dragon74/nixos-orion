@@ -1,7 +1,24 @@
 { config, pkgs, ... }:
 
 {
-  networking.firewall.enable = true;
+  services.firewalld = {
+    enable = false;
+
+    zones."trusted" = {
+      interfaces = [
+        "docker0"
+        "tailscale0"
+      ];
+      masquerade = true;
+    };
+
+    zones."nixos-fw-default".masquerade = true;
+  };
+
+  networking.firewall = {
+    enable = false;
+    backend = "firewalld";
+  };
 
   networking.firewall.allowedTCPPorts = [
     22
@@ -17,7 +34,7 @@
   '';
 
   networking.nftables = {
-    enable = true;
+    enable = false;
     tables."docker" = {
       enable = false;
       family = "inet";
