@@ -18,11 +18,14 @@
     nixfmt-rfc-style
     nodejs_22
     pciutils
-    python3Full
-    python3Packages.argcomplete
-    python3Packages.pip
-    python3Packages.setuptools-rust
-    python3Packages.virtualenv
+    (python3.withPackages (
+      ps: with ps; [
+        pip
+        virtualenv
+        setuptools-rust
+        argcomplete
+      ]
+    ))
     rclone
     restic
     smartmontools
