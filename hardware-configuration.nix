@@ -45,13 +45,6 @@
     { device = "/dev/disk/by-uuid/01034930-d0fc-49ff-9207-c3c78cca7964"; }
   ];
 
-  # ZFS Zvols
-  fileSystems."/mnt/media" = {
-    device = "/dev/disk/by-uuid/7b3b45d3-5339-4086-8370-3064c9f07e3f";
-    fsType = "xfs";
-    options = [ "nofail" ];
-  };
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
